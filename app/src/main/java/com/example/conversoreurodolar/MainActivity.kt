@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnCriar.setOnClickListener{
+        binding.butnCriar.setOnClickListener{
            val criarEvento = Intent(this, TelaDeTarefas::class.java)
             startActivity(criarEvento)
         }
