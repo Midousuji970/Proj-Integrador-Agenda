@@ -11,7 +11,7 @@
         android:id="@+id/saveTollBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/txtSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,42 +64,193 @@
         android:id="@+id/txtSave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="11dp"
         android:text="CRIE SUA TAREFA"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         android:textStyle="normal|bold"
         android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintBottom_toTopOf="@+id/txtNomeTarefa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveTollBar" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    <TextView
+        android:id="@+id/txtPrio"
+        android:layout_width="103dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:text="Prioridade:"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/grupo"
+        app:layout_constraintStart_toStartOf="@+id/grupo"
+        app:layout_constraintTop_toBottomOf="@+id/txtTerminoTarefa" />
+
+    <TextView
+        android:id="@+id/txtTipo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="265dp"
-        app:cardBackgroundColor="#6C7186"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
+        android:text="Tipo:"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/grupoTipo"
+        app:layout_constraintEnd_toEndOf="@+id/txtPrio"
+        app:layout_constraintStart_toStartOf="@+id/grupo"
+        app:layout_constraintTop_toBottomOf="@+id/grupo" />
+
+    <EditText
+        android:id="@+id/txtNomeTarefa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="26dp"
+        android:background="#6C7185"
+        android:contextClickable="true"
+        android:ems="10"
+        android:hint="Digite o Nome da Tarefa"
+        android:inputType="text"
+        android:text=""
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/txtInicioTarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSave" />
+
+    <RadioGroup
+        android:id="@+id/grupoTipo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="37dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnSalvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTipo">
+
+        <RadioButton
+            android:id="@+id/radBtnTrab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/trabalho"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/radBtnLaz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lazer"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FDFCFC" />
+
+        <RadioButton
+            android:id="@+id/radBtnEspo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/esporte"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFCFC" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/grupo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/txtTipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrio">
+
+        <RadioButton
+            android:id="@+id/radBtnBaixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/baixo_prioridade"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/radBtnMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/media_prioridade"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/radBtnAlta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/alta_prioridade"
+            android:textColor="#FFFFFF" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/txtTerminoTarefa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="27dp"
+        android:ems="10"
+        android:hint="Data de Término da Tarefa"
+        android:inputType="date"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/txtPrio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInicioTarefa" />
+
+    <EditText
+        android:id="@+id/txtInicioTarefa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="21dp"
+        android:ems="10"
+        android:hint="Data de Inicio da Tarefa"
+        android:inputType="date"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/txtTerminoTarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeTarefa" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/bg_tollbar_gradient"
+        android:text="SALVAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSave">
-
-
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#6C7185"
-            android:contextClickable="true"
-            android:ems="10"
-            android:hint="Digite o Nome da Tarefa"
-            android:inputType="text"
-            android:text="" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/grupoTipo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

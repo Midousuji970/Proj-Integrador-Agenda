@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878548200645",
+    "project_id": "androidadicionar",
+    "storage_bucket": "androidadicionar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878548200645:android:2812c1a569602e0d9514ac",
+        "android_client_info": {
+          "package_name": "com.example.conversoreurodolar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6T_4tgSqUjh_6q9y72x4xMuOWMIz5JRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
