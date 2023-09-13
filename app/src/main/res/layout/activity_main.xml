@@ -6,117 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- header da Tela-->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Toolbar
-            android:id="@+id/toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            android:title="Tela_Principal"
-            android:titleTextColor="@color/white"
-            android:background="@drawable/bg_tollbar_gradient"/>
-            <ImageView
-                android:id="@+id/ic_like"
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tollbar_gradient"
+                android:title="Tela_Principal"
+                android:titleTextColor="@color/white"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+   <!--footer da Tela-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Toolbar
+                android:id="@+id/Footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tollbar_gradient"
+                android:titleTextColor="@color/white"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/btn_criar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_live"
-                android:layout_marginStart="200dp"
-                app:layout_constraintTop_toTopOf="@+id/toolbar"
-                app:layout_constraintStart_toStartOf="@id/toolbar"
-                app:layout_constraintEnd_toEndOf="@id/toolbar"
-                app:layout_constraintBottom_toBottomOf="@id/toolbar"
-
+                android:text="Criar"
+                app:layout_constraintTop_toTopOf="@id/Footer"
+                app:layout_constraintStart_toStartOf="@id/Footer"
+                app:layout_constraintBottom_toBottomOf="@id/Footer"
+                app:layout_constraintEnd_toEndOf="@+id/Footer"
                 />
-        <ImageView
-            android:id="@+id/ic_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_share"
-            app:layout_constraintTop_toTopOf="@id/toolbar"
-            app:layout_constraintStart_toStartOf="@+id/ic_like"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="@id/toolbar"
-            />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-    <Button
-        android:id="@+id/btn_logar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="74dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Logar"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_Senha" />
 
-    <EditText
-        android:id="@+id/edt_Senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Insira Sua Senha!"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/txtPass"
-        app:layout_constraintTop_toBottomOf="@+id/txtPass" />
-
-    <EditText
-        android:id="@+id/edt_Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Insirá Seu E-Mail!"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/txtLog"
-        app:layout_constraintTop_toBottomOf="@+id/txtLog" />
-
-    <TextView
-        android:id="@+id/txtLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="144dp"
-        android:text="Login:"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="45dp"
-        android:text="Senha:"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/edt_Email"
-        app:layout_constraintTop_toBottomOf="@+id/edt_Email" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
