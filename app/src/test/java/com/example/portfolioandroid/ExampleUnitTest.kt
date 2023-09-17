@@ -1,4 +1,4 @@
-package com.example.conversoreurodolar
+package com.example.portfolioandroid
 
 import org.junit.Test
 
