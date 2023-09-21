@@ -1,16 +1,21 @@
 package com.example.portfolioandroid.telatarefas
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.portfolioandroid.R
 import com.example.portfolioandroid.itemLista.TarefaItem
 import com.example.portfolioandroid.model.Tarefa
 import com.example.portfolioandroid.repositorio.BackGrounde
@@ -21,7 +26,6 @@ fun ListaDeTarefas(
     navController: NavController
 )
 {
-
     Scaffold(topBar = {
         TopAppBar(backgroundColor = BackGrounde,
             title = { Text(text = "Lista de Tarefas",
@@ -29,8 +33,22 @@ fun ListaDeTarefas(
                 fontWeight = FontWeight.Bold,
                 color = Color.White)})
     },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+            navController.navigate("SalvarTarefa")
+            },backgroundColor = BackGrounde
+            ) {
+                Image(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.redondo),
+                    contentDescription = "Botao de Salvar"
+                )
+            }
+        },
         backgroundColor = BackGrounde
-        )
+
+
+    )
+
     {
    val listarTarefas: MutableList<Tarefa> = mutableListOf(
        Tarefa(

@@ -136,19 +136,26 @@ fun TarefaItem(
             start.linkTo(parent.start,margin = 10.dp)
             bottom.linkTo(parent.bottom, margin = 10.dp)
         })
-        Card(
-            backgroundColor = colorT,
-            modifier = Modifier
-                .size(30.dp)
-                .constrainAs(cardTipo) {
-                    top.linkTo(txtPrioridade.bottom, margin = 15.dp)
-                    start.linkTo(txtTipo.end, margin = 10.dp)
-                    bottom.linkTo(parent.bottom, margin = 10.dp)
-                }, shape = ShapeCardPrioridade.large
+        IconButton(onClick = {},modifier = Modifier.size(30.dp).constrainAs(cardTipo){
+            top.linkTo(txtPrioridade.bottom, margin = 15.dp)
+            start.linkTo(txtTipo.end, margin = 10.dp)
+            bottom.linkTo(parent.bottom, margin = 10.dp)
 
-        ){
+        }) {
+            when(tipo){
+                0 -> {
+                    Image(imageVector = ImageVector.vectorResource(id = R.drawable.ic_delete), contentDescription = null)
+                }
+                1 -> {
+                    Image(imageVector = ImageVector.vectorResource(id = R.drawable.share_preto), contentDescription = null)
+                }
+                2 ->{
+                    Image(imageVector = ImageVector.vectorResource(id = R.drawable.brook), contentDescription = null)
+                }
+                else -> {
+                    Image(imageVector = ImageVector.vectorResource(id = R.drawable.pix), contentDescription = null)
+                }}}
 
-        }
         IconButton(onClick = {},modifier = Modifier.constrainAs(btDelete){
             top.linkTo(txtPrioridade.bottom, margin = 10.dp)
             start.linkTo(cardTipo.end,margin = 40.dp)

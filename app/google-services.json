@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "878548200645",
-    "project_id": "androidadicionar",
-    "storage_bucket": "androidadicionar.appspot.com"
+    "project_number": "595103011345",
+    "project_id": "lista-tarefas-compose",
+    "storage_bucket": "lista-tarefas-compose.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:878548200645:android:2812c1a569602e0d9514ac",
+        "mobilesdk_app_id": "1:595103011345:android:5e95b1b2f4c008142e17b0",
         "android_client_info": {
-          "package_name": "com.example.conversoreurodolar"
+          "package_name": "com.example.portfolioandroid"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA6T_4tgSqUjh_6q9y72x4xMuOWMIz5JRQ"
+          "current_key": "AIzaSyCdJf0BmP75X4cKN_R30CFN8NzZKffi7lU"
         }
       ],
       "services": {

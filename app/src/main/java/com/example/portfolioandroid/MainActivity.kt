@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.portfolioandroid.telatarefas.ListaDeTarefas
+import com.example.portfolioandroid.telatarefas.SalvarTarefa
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,12 @@ class MainActivity : ComponentActivity() {
                 )
                 {
                     ListaDeTarefas(navController)
+                }
+                composable(
+                    route = "SalvarTarefa"
+                )
+                {
+                    SalvarTarefa(navController)
                 }
             }
         }
