@@ -20,3 +20,8 @@ val ShapeCardPrioridade = Shapes(
     medium = RoundedCornerShape(50.dp),
     large = RoundedCornerShape(100.dp)
 )
+val ShapeCardTeste = Shapes(
+    small = RoundedCornerShape(10.dp),
+    medium = RoundedCornerShape(20.dp),
+    large = RoundedCornerShape(70.dp)
+)

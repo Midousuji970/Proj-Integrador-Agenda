@@ -1,6 +1,8 @@
 package com.example.portfolioandroid.telatarefas
 
 import android.annotation.SuppressLint
+import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.IconButton
 import androidx.compose.material.RadioButton
 import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.material.Scaffold
@@ -19,18 +22,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.portfolioandroid.R
+import com.example.portfolioandroid.constantes.Constantes
 import com.example.portfolioandroid.repositorio.BackGrounde
 import com.example.portfolioandroid.repositorio.Botao
 import com.example.portfolioandroid.repositorio.CaixaDeTexto
+import com.example.portfolioandroid.repositorio.tarefasRepositorio
 import com.example.portfolioandroid.ui.btnAmareloDisable
 import com.example.portfolioandroid.ui.btnAmareloEnable
 import com.example.portfolioandroid.ui.btnVerdeDisable
@@ -38,19 +48,34 @@ import com.example.portfolioandroid.ui.btnVerdeEnable
 import com.example.portfolioandroid.ui.btnVermelhoDisable
 import com.example.portfolioandroid.ui.btnVermelhoEnable
 import com.example.portfolioandroid.ui.cinza
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SalvarTarefa(
     navController: NavController
-) {
 
+
+) {
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val repositorio = tarefasRepositorio()
 
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = BackGrounde,
                 title = {
+                    IconButton(onClick ={
+                        navController.previousBackStackEntry?.savedStateHandle
+                        navController.popBackStack()
+                    }, modifier = Modifier.padding(start = 1.dp) ) {
+                        Image(imageVector = ImageVector.vectorResource(id = R.drawable.seta_back), contentDescription = null)
+
+                    }
                     Text(
+
                         text = "SALVAR TAREFA",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
@@ -60,14 +85,14 @@ fun SalvarTarefa(
         },
         backgroundColor = cinza
     ) {
-        var tituloTarefa by remember {
+        var nomeTarefa by remember {
 
             mutableStateOf("")
         }
-        var dataIniTarefa by remember {
+        var iniTarefa by remember {
             mutableStateOf("")
         }
-        var dataFimTarefa by remember {
+        var fimTarefa by remember {
             mutableStateOf("")
         }
 
@@ -99,9 +124,9 @@ fun SalvarTarefa(
                 .verticalScroll(rememberScrollState())
         ) {
             CaixaDeTexto(
-                value = tituloTarefa,
+                value = nomeTarefa,
                 onValueChange = {
-                    tituloTarefa = it
+                    nomeTarefa = it
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,10 +137,10 @@ fun SalvarTarefa(
             )
 
             CaixaDeTexto(
-                value = dataIniTarefa,
+                value = iniTarefa,
                 onValueChange = {
                     if (it.length < maxNum) {
-                        dataIniTarefa = it
+                        iniTarefa = it
                     }
                 },
                 modifier = Modifier
@@ -123,13 +148,13 @@ fun SalvarTarefa(
                     .padding(20.dp, 10.dp, 20.dp, 0.dp),
                 label = "Data de Inicio",
                 maxLines = 1,
-                keyBoardType = KeyboardType.Number
+                keyBoardType = KeyboardType.Text
             )
             CaixaDeTexto(
-                value = dataFimTarefa,
+                value = fimTarefa,
                 onValueChange = {
                     if (it.length < maxNum) {
-                        dataFimTarefa = it
+                        fimTarefa = it
                     }
                 },
                 modifier = Modifier
@@ -137,7 +162,7 @@ fun SalvarTarefa(
                     .padding(20.dp, 10.dp, 20.dp, 0.dp),
                 label = "Data de Término",
                 maxLines = 1,
-                keyBoardType = KeyboardType.Number
+                keyBoardType = KeyboardType.Text
             )
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -226,13 +251,70 @@ fun SalvarTarefa(
                 )
                 Text(text = "Saude",fontSize = 14.sp)
             }
-            Botao(onClick = { },
-                modifier = Modifier.fillMaxWidth().height(80.dp).padding(20.dp),
+            Botao(onClick =
+            {
+                var mensagem = true
+            scope.launch(Dispatchers.IO){
+                if(nomeTarefa.isEmpty()){
+                    mensagem = false
+                }else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && baixaPrioridade && lazerTipo){
+                repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.BAIXA_PRIORIDADE, Constantes.LAZER_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && baixaPrioridade && trabalhoTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.BAIXA_PRIORIDADE, Constantes.TRABALHO_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && baixaPrioridade && saudeTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.BAIXA_PRIORIDADE, Constantes.SAUDE_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && mediaPrioridade && lazerTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.MEDIA_PRIORIDADE, Constantes.LAZER_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && mediaPrioridade && trabalhoTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.MEDIA_PRIORIDADE, Constantes.TRABALHO_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && mediaPrioridade && saudeTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.MEDIA_PRIORIDADE, Constantes.SAUDE_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && altaPrioridade && lazerTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.ALTA_PRIORIDADE, Constantes.LAZER_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && altaPrioridade && trabalhoTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.ALTA_PRIORIDADE, Constantes.TRABALHO_TIPO )
+                    mensagem = true
+                }
+                else if(nomeTarefa.isNotEmpty() && iniTarefa.isNotEmpty() && fimTarefa.isNotEmpty() && altaPrioridade && saudeTipo){
+                    repositorio.salvarTarefa(nomeTarefa,iniTarefa,fimTarefa,Constantes.ALTA_PRIORIDADE, Constantes.SAUDE_TIPO )
+                    mensagem = true
+                }
+
+
+            }
+                scope.launch ( Dispatchers.Main ){
+                        if(mensagem){
+                            Toast.makeText(context,"Sucesso ao salvar a tarefa",Toast.LENGTH_SHORT).show()
+                            navController.popBackStack()
+                        }else{
+                            Toast.makeText(context,"Falha ao Salvar a tarefa",Toast.LENGTH_SHORT).show()
+                        }
+                }
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(80.dp)
+                    .padding(20.dp),
                 texto = "SALVAR")
         }
 
     }
 }
+
 
 
 

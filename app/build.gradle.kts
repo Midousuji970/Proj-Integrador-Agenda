@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -45,9 +46,8 @@ android {
     }
 }
 
+
 dependencies {
-
-
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -57,20 +57,19 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
-    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    implementation("androidx.datastore:datastore:1.0.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation ("com.google.firebase:firebase-analytics-ktx")
 
-
-    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-    val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
+        val composeBom = platform("androidx.compose:compose-bom:2023.01.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     // Choose one of the following:
-    implementation("androidx.compose.material3:material3")
-        // or Material Design 2
     implementation("androidx.compose.material:material")
         // or skip Material Design and build directly on top of foundational components
     implementation("androidx.compose.foundation:foundation")
@@ -78,6 +77,8 @@ dependencies {
         // such as input and measurement/layout
 
     implementation ("androidx.compose.ui:ui:1.5.1")
+    implementation("androidx.compose.material3:material3:1.0.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.0.1")
 
         // Android Studio Preview support
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -91,21 +92,9 @@ dependencies {
         // the icons but not the material library (e.g. when using Material3 or a
         // custom design system based on Foundation)
     implementation("androidx.compose.material:material-icons-core")
-        // Optional - Add full set of material icons
-    implementation("androidx.compose.material:material-icons-extended")
-        // Optional - Add window size utils
-    implementation("androidx.compose.material3:material3-window-size-class")
 
-        // Optional - Integration with activities
-    implementation("androidx.activity:activity-compose:1.6.1")
-        // Optional - Integration with ViewModels
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-        // Optional - Integration with LiveData
-    implementation("androidx.compose.runtime:runtime-livedata")
-        // Optional - Integration with RxJava
-    implementation("androidx.compose.runtime:runtime-rxjava2")
-
-    var nav_version = ("2.5.3")
+    val nav_version = ("2.5.3")
     implementation ("androidx.navigation:navigation-compose:$nav_version")
+
 }
 

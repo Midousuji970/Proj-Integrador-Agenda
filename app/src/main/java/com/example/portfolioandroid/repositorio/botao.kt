@@ -15,7 +15,7 @@ fun Botao(
     modifier: Modifier,
     texto: String
 ){
-    Button(onClick = {  },
+    Button(onClick,
         modifier,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = BackGrounde,

@@ -4,15 +4,19 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
         mavenCentral()
+        google()
+        gradlePluginPortal()
     }
+
+
 }
 
-rootProject.name = "ConversorEuroDolar"
+rootProject.name = "Projeto Angroid"
 include(":app")
  

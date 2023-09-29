@@ -15,5 +15,6 @@ val btnAmareloEnable = Color(0xFFFFEB38)
 val btnVermelhoDisable = Color(0xFFFF1100)
 val btnVermelhoEnable = Color(0xFFFF1100)
 
+val cinzaBack = Color(0xFFe8e8e8)
 
 

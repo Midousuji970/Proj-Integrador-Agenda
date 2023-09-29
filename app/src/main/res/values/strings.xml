@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ConversorEuroDolar</string>
+    <string name="app_name">Agenda</string>
     <string name="baixo_prioridade">Baixa     </string>
     <string name="media_prioridade">Media     </string>
     <string name="alta_prioridade">Alta      </string>
