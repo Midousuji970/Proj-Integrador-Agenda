@@ -1,5 +1,6 @@
 package com.example.portfolioandroid.itemLista
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.portfolioandroid.model.Metas
+import com.example.portfolioandroid.repositorio.BackGrounde
 import com.example.portfolioandroid.repositorio.verde
 import com.example.portfolioandroid.repositorio.vermelho
 
@@ -34,7 +36,8 @@ fun MetaItem(
     var con = conCon.toInt()
 
     Card (
-        backgroundColor = Color.White,
+        border = BorderStroke(2.dp, BackGrounde)
+        , backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)

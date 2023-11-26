@@ -26,8 +26,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.itemLista.TarefaItem
-import com.example.portfolioandroid.repositorio.BackGrounde
+import com.example.portfolioandroid.repositorio.azulClaro
 import com.example.portfolioandroid.repositorio.tarefasRepositorio
+import com.example.portfolioandroid.ui.cinzaBack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation")
@@ -54,7 +55,7 @@ fun ListaDeTarefas(
     Scaffold(
         topBar = {
 
-        TopAppBar(backgroundColor = BackGrounde,
+        TopAppBar(backgroundColor = azulClaro,
             title = { Text(text = "Lista de Tarefas",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -66,7 +67,7 @@ fun ListaDeTarefas(
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 navController.navigate(route = "SalvarTarefa")
-            },backgroundColor = BackGrounde
+            },backgroundColor = azulClaro
             ) {
                 Image(
                     imageVector = ImageVector.vectorResource(id = R.drawable.redondo),
@@ -74,7 +75,7 @@ fun ListaDeTarefas(
                 )
             }
         },
-        backgroundColor = BackGrounde
+        backgroundColor = Color.White
 
 
     )
@@ -97,6 +98,7 @@ fun BottomBar(
 ) {
     val currentRoute by navController.currentBackStackEntryAsState()
     BottomNavigation(
+
         backgroundColor = Color.White,
         contentColor = MaterialTheme.colorScheme.onPrimary
     ) {
@@ -108,11 +110,12 @@ fun BottomBar(
                 },
                 icon = {
                     Icon(
+
                         imageVector = item.icon,
                         contentDescription = null
 
                     )
-
+                    cinzaBack
 
                 }
             )

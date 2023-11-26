@@ -3,6 +3,7 @@ package com.example.portfolioandroid.itemLista
 import android.app.AlertDialog
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,10 +27,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.model.Tarefa
+import com.example.portfolioandroid.repositorio.BackGrounde
 import com.example.portfolioandroid.repositorio.azulClaro
 import com.example.portfolioandroid.repositorio.tarefasRepositorio
 import com.example.portfolioandroid.ui.ShapeCardPrioridade
-import com.example.portfolioandroid.ui.cinzaBack
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -126,7 +127,8 @@ fun TarefaItem(
             }}
 
     Card (
-        backgroundColor = cinzaBack,
+        border = BorderStroke(2.dp, BackGrounde)
+        , backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)

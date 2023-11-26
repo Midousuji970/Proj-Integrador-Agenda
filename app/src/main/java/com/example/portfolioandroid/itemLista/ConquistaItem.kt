@@ -1,5 +1,6 @@
 package com.example.portfolioandroid.itemLista
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.model.Conquistas
+import com.example.portfolioandroid.repositorio.BackGrounde
 
 @Composable
 fun ConquistaItem(
@@ -43,7 +45,8 @@ fun ConquistaItem(
             "Exercicio"
         }}
     Card (
-        backgroundColor = Color.White,
+        border = BorderStroke(2.dp, BackGrounde)
+        , backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)

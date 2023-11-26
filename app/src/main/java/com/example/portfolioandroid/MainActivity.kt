@@ -9,7 +9,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.portfolioandroid.telatarefas.ConquistaTarefa
 import com.example.portfolioandroid.telatarefas.ListaDeTarefas
 import com.example.portfolioandroid.telatarefas.MetasTarefa
+import com.example.portfolioandroid.telatarefas.SalvarGasto
 import com.example.portfolioandroid.telatarefas.SalvarTarefa
+import com.example.portfolioandroid.telatarefas.SalvarUsuario
 import com.example.portfolioandroid.telatarefas.UsuarioTarefa
 import com.example.portfolioandroid.telatarefas.gastoTarefas
 class MainActivity : ComponentActivity() {
@@ -18,7 +20,8 @@ class MainActivity : ComponentActivity() {
         setContent{
             val navController = rememberNavController()
 
-                    NavHost(navController = navController, startDestination = "ListaDeTarefas") {
+                    NavHost(navController = navController, startDestination = "ListaDeTarefas"){
+
                     composable(
                         route = "ListaDeTarefas"
                     )
@@ -31,6 +34,16 @@ class MainActivity : ComponentActivity() {
                     {
                         SalvarTarefa(navController)
                     }
+                    composable(
+                        route = "SalvarGasto"
+                    )
+                    {
+                        SalvarGasto(navController) }
+                        composable(
+                            route = "SalvarUsuario"
+                        )
+                        {
+                            SalvarUsuario(navController) }
                     composable(
                         route = "Metas"
                     ) {

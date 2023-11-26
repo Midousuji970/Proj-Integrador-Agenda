@@ -8,4 +8,5 @@ object Constantes {
     const val LAZER_TIPO = 0
     const val TRABALHO_TIPO = 1
     const val SAUDE_TIPO = 2
+
 }

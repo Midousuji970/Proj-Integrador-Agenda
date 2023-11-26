@@ -1,5 +1,7 @@
 package com.example.portfolioandroid.itemLista
 
+import android.content.Context
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,19 +17,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.model.Usuarios
+import com.example.portfolioandroid.repositorio.BackGrounde
 
 @Composable
 fun UsuarioItem(
     position: Int,
-    listarUsuario: MutableList<Usuarios>
+    listarUsuario: MutableList<Usuarios>,
+    context: Context,
+    navController: NavController
 ){
-    val icone = listarUsuario[position].icone
+
     val nomeUsu = listarUsuario[position].nomeUsu
     val perfil = listarUsuario[position].perfil
     Card (
-        backgroundColor = Color.White,
+        border = BorderStroke(2.dp, BackGrounde)
+        ,backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
@@ -35,7 +42,7 @@ fun UsuarioItem(
         ConstraintLayout(
             modifier = Modifier.padding(20.dp)
         ) {
-            val (nomeUsus,foto,descri, perfils, btMuda) = createRefs()
+            val (nomeUsus,descri, perfils, btMuda) = createRefs()
             IconButton(onClick = {},modifier = Modifier.constrainAs(btMuda){
                 top.linkTo(parent.top, margin = 10.dp)
                 start.linkTo(parent.start,margin = 10.dp)

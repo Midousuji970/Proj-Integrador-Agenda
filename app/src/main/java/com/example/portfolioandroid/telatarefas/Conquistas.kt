@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.itemLista.ConquistaItem
 import com.example.portfolioandroid.model.Conquistas
-import com.example.portfolioandroid.repositorio.BackGrounde
+import com.example.portfolioandroid.repositorio.azulClaro
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
@@ -37,7 +37,7 @@ fun ConquistaTarefa(
         BottomBarItem("Usuario",imagem5)
     )
     Scaffold(topBar = {
-        TopAppBar(backgroundColor = BackGrounde,
+        TopAppBar(backgroundColor = azulClaro,
             title = { Text(text = "Conquistas",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -46,7 +46,7 @@ fun ConquistaTarefa(
         bottomBar = { BottomBar(navController = navController, items = items)
 
         },
-        backgroundColor = BackGrounde
+        backgroundColor = Color.White
 
     )
 

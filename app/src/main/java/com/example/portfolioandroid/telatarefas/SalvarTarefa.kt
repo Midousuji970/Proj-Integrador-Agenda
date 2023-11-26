@@ -37,9 +37,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.constantes.Constantes
-import com.example.portfolioandroid.repositorio.BackGrounde
 import com.example.portfolioandroid.repositorio.Botao
 import com.example.portfolioandroid.repositorio.CaixaDeTexto
+import com.example.portfolioandroid.repositorio.azulClaro
 import com.example.portfolioandroid.repositorio.tarefasRepositorio
 import com.example.portfolioandroid.ui.btnAmareloDisable
 import com.example.portfolioandroid.ui.btnAmareloEnable
@@ -47,7 +47,6 @@ import com.example.portfolioandroid.ui.btnVerdeDisable
 import com.example.portfolioandroid.ui.btnVerdeEnable
 import com.example.portfolioandroid.ui.btnVermelhoDisable
 import com.example.portfolioandroid.ui.btnVermelhoEnable
-import com.example.portfolioandroid.ui.cinza
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -65,7 +64,7 @@ fun SalvarTarefa(
 
     Scaffold(
         topBar = {
-            TopAppBar(backgroundColor = BackGrounde,
+            TopAppBar(backgroundColor = azulClaro,
                 title = {
                     IconButton(onClick ={
                         navController.previousBackStackEntry?.savedStateHandle
@@ -83,7 +82,7 @@ fun SalvarTarefa(
                     )
                 })
         },
-        backgroundColor = cinza
+        backgroundColor = Color.White
     ) {
         var nomeTarefa by remember {
 

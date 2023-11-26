@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.itemLista.MetaItem
 import com.example.portfolioandroid.model.Metas
-import com.example.portfolioandroid.repositorio.BackGrounde
+import com.example.portfolioandroid.repositorio.azulClaro
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
@@ -37,7 +37,7 @@ fun MetasTarefa(
         BottomBarItem("Usuario",imagem5)
     )
     Scaffold(topBar = {
-        TopAppBar(backgroundColor = BackGrounde,
+        TopAppBar(backgroundColor = azulClaro,
             title = { Text(text = "Metas",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -45,7 +45,7 @@ fun MetasTarefa(
     },
         bottomBar = { BottomBar(navController = navController, items = items)
     },
-        backgroundColor = BackGrounde
+        backgroundColor = Color.White
     )
 
     {

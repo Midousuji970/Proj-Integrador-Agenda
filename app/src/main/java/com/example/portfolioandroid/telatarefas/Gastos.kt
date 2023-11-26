@@ -9,16 +9,18 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.portfolioandroid.R
 import com.example.portfolioandroid.itemLista.GastoItem
-import com.example.portfolioandroid.model.Gasto
-import com.example.portfolioandroid.repositorio.BackGrounde
+import com.example.portfolioandroid.repositorio.GastoRepositorio
+import com.example.portfolioandroid.repositorio.azulClaro
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
@@ -37,9 +39,12 @@ fun gastoTarefas(
         BottomBarItem("Conquista",imagem3),
         BottomBarItem("Gasto",imagem4),
         BottomBarItem("Usuario",imagem5)
+
     )
+    val repositorios = GastoRepositorio()
+    val contexte = LocalContext.current
     Scaffold(topBar = {
-        TopAppBar(backgroundColor = BackGrounde,
+        TopAppBar(backgroundColor = azulClaro,
             title = { Text(text = "Gastos",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
@@ -50,8 +55,8 @@ fun gastoTarefas(
     },
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                navController.navigate(route = "SalvarTarefa")
-            },backgroundColor = BackGrounde
+                navController.navigate(route = "SalvarGasto")
+            },backgroundColor = azulClaro
             ) {
                 Image(
                     imageVector = ImageVector.vectorResource(id = R.drawable.redondo),
@@ -59,41 +64,22 @@ fun gastoTarefas(
                 )
             }
         },
-        backgroundColor = BackGrounde
+        backgroundColor = Color.White
 
 
     )
 
     {
-        val listarGasto: MutableList<Gasto> = mutableListOf(
-            Gasto(
-                gasto = "12.00",
-                descricao = "Padaria",
-                tipoDeCompra = "Cartão Débito"
-            ),
-            Gasto(
-                gasto = "250.00",
-                descricao = "Show",
-                tipoDeCompra = "Pix"
-            ),
-            Gasto(
-                gasto = "100.00",
-                descricao = "Ventilador",
-                tipoDeCompra = "Dinheiro"
-            ),
-            Gasto(
-                gasto = "1000.00",
-                descricao = "Monitor",
-                tipoDeCompra = "Cartão Crédito"
-            )
-        )
+        val listaGastos = repositorios.recuperarGasto().collectAsState(mutableListOf()).value
         LazyColumn(){
-            itemsIndexed(listarGasto){position, _ ->
-                GastoItem(position,listarGasto)
+            itemsIndexed(listaGastos){
+                    position, _, ->
+                GastoItem(position = position, listaGastos = listaGastos, contexts = contexte, navController = navController)
             }
         }
     }
-}
+    }
+
 
 
 
