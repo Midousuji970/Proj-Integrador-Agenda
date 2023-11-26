@@ -43,7 +43,7 @@ fun GastoItem(
     val gastoRepositorio = GastoRepositorio()
     fun dialogsDeletar(){
         val alertDialog = AlertDialog.Builder(contexts)
-        alertDialog.setTitle("Deletar o Gasto")
+        alertDialog.setTitle("Deletar o Gasto ")
             .setMessage("Deseja Excluir o Gasto?")
             .setPositiveButton("Sim"){
                     _, _ ->
